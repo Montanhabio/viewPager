@@ -1,21 +1,67 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {Component} from 'react';
+import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
+import PagerView from 'react-native-pager-view';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+
+const Stack = createStackNavigator();
+
+export default class App extends Component{
+
+  render(){
+
+    return(
+      <View style={{flex: 1, marginTop:70}}>
+        <View style={styles.page}>
+          <Image source={require('./src/images/title.png')}/>
+        </View>
+        
+        <PagerView 
+          style={{height:450}}
+          initialPage={0}>
+        <View style={styles.page} key="1">
+           <Image source={require('./src/images/dalton_page.png')}/>
+        </View>
+        <View style={styles.page} key="2">
+        <Image 
+           source={require('./src/images/thomsom_page.png')}/>
+        </View>
+        <View style={styles.page} key="3">
+        <Image 
+           source={require('./src/images/rutherford_page.png')}/>
+        </View>    
+        <View style={styles.page} key="4">
+        <Image 
+           source={require('./src/images/bohr_page.png')}/>
+        </View> 
+        <View style={styles.page} key="5">
+        <Image 
+           source={require('./src/images/schrodinger_page.png')}/>
+        </View> 
+        </PagerView>
+      </View>
+
+    )
+  }
+} 
 
 const styles = StyleSheet.create({
-  container: {
+  viewPager: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
+
+  page: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop:5
+  },
+
+  titulo: {
+    fontWeight: 'bold',
+    fontSize: 26,
+    textAlign:'center',
+    color: 'blue'
+},
 });
+
+
